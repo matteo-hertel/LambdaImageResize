@@ -1,1 +1,0 @@
-## AWS Lamba Image Resize
