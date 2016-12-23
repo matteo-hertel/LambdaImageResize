@@ -9,6 +9,7 @@ var util = require('util');
 // get reference to S3 client
 var s3 = new AWS.S3();
 exports.handler = function(event, context) {
+
     // Read options from the event.
     console.log("Reading options from event:\n", util.inspect(event, {
         depth: 5
@@ -17,7 +18,7 @@ exports.handler = function(event, context) {
     // Object key may have spaces or unicode non-ASCII characters.
     var srcKey = decodeURIComponent(event.Records[0].s3.object.key.replace(
         /\+/g, " "));
-    var dstBucket = srcBucket + "-output";
+    var dstBucket = srcBucket.replace("source", "destination");
     // Sanity check: validate that source and destination are different buckets.
     if (srcBucket == dstBucket) {
         console.error("Destination bucket must not match source bucket.");
