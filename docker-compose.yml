@@ -1,0 +1,4 @@
+app:
+  image: abiskop/node-imagemagick
+  volumes:
+    - ./code:/var/node
